@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 
 const AddNotesCard = () => {
   return (
-    <div className="px-4 pt-14  lg:flex-1">
+    <div className="md:px-4 pt-14  lg:flex-1">
       <button className="flex items-center gap-2.5">
         <Plus size={20} color="#c0c1ff"  />
         <h1 className="text-[21px] font-bold ">Add Notes</h1>
