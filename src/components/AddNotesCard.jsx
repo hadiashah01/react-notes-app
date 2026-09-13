@@ -5,8 +5,8 @@ const AddNotesCard = () => {
   return (
     <div className="px-4 pt-14">
       <button className="flex items-center gap-2.5">
-        <Plus size={20} color="#c0c1ff" strokeWidth={3} />
-        <h1 className="text-lg font-bold ">Add Notes</h1>
+        <Plus size={20} color="#c0c1ff"  />
+        <h1 className="text-[21px] font-bold ">Add Notes</h1>
       </button>
       <form className=" mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]">
         <input
