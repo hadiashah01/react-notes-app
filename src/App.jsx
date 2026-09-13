@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { RotateCcwClock, Pencil, Trash, Plus } from "lucide-react";
 import Navbar from "./components/Navbar";
@@ -6,6 +6,8 @@ import AddNotesCard from "./components/AddNotesCard";
 import RecentNotes from "./components/RecentNotes";
 
 const App = () => {
+  const [title, setTitle] = useState("");
+  const [notes, setNotes] = useState("");
   return (
     <div className="h-100% lg:min-h-screen bg-[#0f131c] text-[#dfe2ee] pt-0.5 ">
       <Navbar />
@@ -18,6 +20,9 @@ const App = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
+              console.log(title,notes)
+              setTitle("");
+              setNotes("");
             }}
             className=" mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]"
           >
@@ -25,12 +30,20 @@ const App = () => {
               type="text "
               className=" outline-0 text-md font-semibold px-7 py-6 h-5"
               placeholder="Title..."
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
             />
             <textarea
               className="h-46  outline-0 mx-7 font-light border-b resize-none border-b-[#5353534d] "
               rows="5"
               cols="40"
+              value={notes}
               placeholder="Write your note..."
+              onChange={(e) => {
+                setNotes(e.target.value);
+              }}
             ></textarea>
             <div className="btn">
               <button className="bg-[#c0c1ff] ml-auto flex items-center gap-2 py-2 px-5 font-semibold rounded-sm text-[#1000a9] mb-5 mr-5">
