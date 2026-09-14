@@ -24,7 +24,6 @@ const App = () => {
               const newTask = [...task];
               newTask.push({ title, notes });
               setTask(newTask);
-              console.log(newTask, "33");
               setTitle("");
               setNotes("");
             }}
@@ -63,9 +62,9 @@ const App = () => {
             <h1 className="text-[21px] font-bold ">Recent Notes</h1>
           </div>
           <div className=" flex items-start gap-4 lg:gap-0 flex-wrap min-h-[29vh]">
-            {task.map((elem) => {
+            {task.map((elem,idx) => {
               return (
-                <section className="lg:min-w-full sm:min-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:min-w-[47%] md:max-w-[47%]">
+                <section key={idx} className="lg:min-w-full sm:min-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:min-w-[47%] md:max-w-[47%]">
                   <div className="flex gap-2 items-center">
                     <h4 className="text-lg font-semibold flex-wrap text-wrap ">
                       {elem.title}
