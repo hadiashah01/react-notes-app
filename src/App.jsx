@@ -8,6 +8,7 @@ import RecentNotes from "./components/RecentNotes";
 const App = () => {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
+  const [task, setTask] = useState([]);
   return (
     <div className="h-100% lg:min-h-screen bg-[#0f131c] text-[#dfe2ee] pt-0.5 ">
       <Navbar />
@@ -20,7 +21,10 @@ const App = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(title,notes)
+              const newTask = [...task];
+              newTask.push({ title, notes });
+              setTask(newTask);
+              console.log(newTask, "33");
               setTitle("");
               setNotes("");
             }}
@@ -36,7 +40,7 @@ const App = () => {
               }}
             />
             <textarea
-              className="h-46  outline-0 mx-7 font-light border-b resize-none border-b-[#5353534d] "
+              className="h-46 overflow-y-scroll scrollbar-none  outline-0 mx-7 font-light border-b resize-none border-b-[#5353534d] "
               rows="5"
               cols="40"
               value={notes}
@@ -58,57 +62,36 @@ const App = () => {
             <RotateCcwClock size={20} color="#908fa0" />
             <h1 className="text-[21px] font-bold ">Recent Notes</h1>
           </div>
-          <div className=" flex gap-4 lg:gap-0 flex-wrap ">
-            <section className="lg:max-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:max-w-[47%]">
-              <div className="flex justify-between">
-                <h4 className="text-lg font-semibold">
-                  Q3 Architecture Review
-                </h4>
-                <div className="text-[13px] tracking-widest">Just now</div>
-              </div>
-              <p className="leading-6 tracking-tight mb-5 text-[#c7c4d7] mt-3 flex-wrap">
-                Finalize microservice boundaries for user auth and data
-                pipelines. Ensure backwards compatibility with v2 API before
-                canary release.
-              </p>
+          <div className=" flex items-start gap-4 lg:gap-0 flex-wrap min-h-[29vh]">
+            {task.map((elem) => {
+              return (
+                <section className="lg:min-w-full sm:min-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:min-w-[47%] md:max-w-[47%]">
+                  <div className="flex gap-2 items-center">
+                    <h4 className="text-lg font-semibold flex-wrap text-wrap ">
+                      {elem.title}
+                    </h4>
+                    <div className="text-[13px] tracking-widest ml-auto">
+                      Just now
+                    </div>
+                  </div>
+                  <p className="leading-6 tracking-tight mb-5 text-[#c7c4d7] mt-3 flex-wrap">
+                    {elem.notes}
+                  </p>
 
-              <div className=" border-t  border-t-[#5353534d]">
-                <button className=" ml-auto mt-2 flex items-center gap-4 rounded-sm mr-3">
-                  <Pencil
-                    className=""
-                    size={18}
-                    strokeWidth={2}
-                    color="#908fa0"
-                  />
-                  <Trash size={18} strokeWidth={2} color="#908fa0" />
-                </button>
-              </div>
-            </section>
-            <section className="lg:max-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:max-w-[47%]">
-              <div className="flex justify-between">
-                <h4 className="text-lg font-semibold">
-                  Q3 Architecture Review
-                </h4>
-                <div className="text-[13px] tracking-widest">Just now</div>
-              </div>
-              <p className="leading-6 tracking-tight mb-5 text-[#c7c4d7] mt-3 flex-wrap">
-                Finalize microservice boundaries for user auth and data
-                pipelines. Ensure backwards compatibility with v2 API before
-                canary release.
-              </p>
-
-              <div className=" border-t  border-t-[#5353534d]">
-                <button className=" ml-auto mt-2 flex items-center gap-4 rounded-sm mr-3">
-                  <Pencil
-                    className=""
-                    size={18}
-                    strokeWidth={2}
-                    color="#908fa0"
-                  />
-                  <Trash size={18} strokeWidth={2} color="#908fa0" />
-                </button>
-              </div>
-            </section>
+                  <div className=" border-t  border-t-[#5353534d]">
+                    <button className=" ml-auto mt-2 flex items-center gap-4 rounded-sm mr-3">
+                      <Pencil
+                        className=""
+                        size={18}
+                        strokeWidth={2}
+                        color="#908fa0"
+                      />
+                      <Trash size={18} strokeWidth={2} color="#908fa0" />
+                    </button>
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </div>
       </div>
