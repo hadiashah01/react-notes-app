@@ -9,6 +9,11 @@ const App = () => {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [task, setTask] = useState([]);
+  function deleteTask(key) {
+    const newTask = [...task];
+    newTask.splice(key, 1);
+    setTask(newTask);
+  }
   return (
     <div className="h-100% lg:min-h-screen bg-[#0f131c] text-[#dfe2ee] pt-0.5 ">
       <Navbar />
@@ -62,9 +67,12 @@ const App = () => {
             <h1 className="text-[21px] font-bold ">Recent Notes</h1>
           </div>
           <div className=" flex items-start gap-4 lg:gap-0 flex-wrap min-h-[29vh]">
-            {task.map((elem,idx) => {
+            {task.map((elem, idx) => {
               return (
-                <section key={idx} className="lg:min-w-full sm:min-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:min-w-[47%] md:max-w-[47%]">
+                <section
+                  key={idx}
+                  className="lg:min-w-full sm:min-w-full pt-6 pb-5 mb-5 px-6 mt-2 flex flex-col border border-[#5555544d]  rounded-lg bg-[#181c24]  md:min-w-[47%] md:max-w-[47%]"
+                >
                   <div className="flex gap-2 items-center">
                     <h4 className="text-lg font-semibold flex-wrap text-wrap ">
                       {elem.title}
@@ -85,7 +93,14 @@ const App = () => {
                         strokeWidth={2}
                         color="#908fa0"
                       />
-                      <Trash size={18} strokeWidth={2} color="#908fa0" />
+                      <Trash
+                        onClick={(key) => {
+                          deleteTask(key);
+                        }}
+                        size={18}
+                        strokeWidth={2}
+                        color="#908fa0"
+                      />
                     </button>
                   </div>
                 </section>
