@@ -18,7 +18,11 @@ A responsive notes management interface built with **React and Tailwind CSS**. N
 
 Click the preview to visit the live page 👇
 
-[![NoteCraft Preview](./public/notes-laptop-preview.png)](https://hadiashah01.github.io/react-notes-app/)
+[![NoteCraft Preview](./public/Notes-laptop-preview.png)](https://hadiashah01.github.io/react-notes-app/)
+
+### App Demo
+
+![Notes App Demo](./public/notes-app.gif)
 
 ### Responsive Views
 
