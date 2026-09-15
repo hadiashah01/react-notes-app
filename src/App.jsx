@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { RotateCcwClock, Pencil, Trash, Plus } from "lucide-react";
 import Navbar from "./components/Navbar";
-import AddNotesCard from "./components/AddNotesCard";
-import RecentNotes from "./components/RecentNotes";
 
 const App = () => {
   const [title, setTitle] = useState("");
